@@ -1,4 +1,4 @@
 class ProgramChef < ActiveRecord::Base
-  belongs_to :programs
-  belongs_to :chef_resources
+  belongs_to :program
+  belongs_to :chef_resource
 end

@@ -1,10 +1,10 @@
 class ProgramChefsController < ApplicationController
-  before_action :set_program_chef, only: [:show, :edit, :update, :destroy]
+  #before_action :set_program_chef, only: [:show, :edit, :update, :destroy]
 
   # GET /program_chefs
   # GET /program_chefs.json
   def index
-    @program_chefs = ProgramChef.all
+    #@program_chefs = ProgramChef.all
   end
 
   # GET /program_chefs/1
@@ -14,7 +14,7 @@ class ProgramChefsController < ApplicationController
 
   # GET /program_chefs/new
   def new
-    @program_chef = ProgramChef.new
+    #@program_chef = ProgramChef.new
   end
 
   # GET /program_chefs/1/edit
@@ -42,15 +42,15 @@ class ProgramChefsController < ApplicationController
   # PATCH/PUT /program_chefs/1
   # PATCH/PUT /program_chefs/1.json
   def update
-    respond_to do |format|
-      if @program_chef.update(program_chef_params)
-        format.html { redirect_to @program_chef, notice: 'Program chef was successfully updated.' }
-        format.json { render :show, status: :ok, location: @program_chef }
-      else
-        format.html { render :edit }
-        format.json { render json: @program_chef.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+      #if @program_chef.update(program_chef_params)
+        #format.html { redirect_to @program_chef, notice: 'Program chef was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @program_chef }
+      #else
+        #format.html { render :edit }
+        #format.json { render json: @program_chef.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # DELETE /program_chefs/1
@@ -68,9 +68,9 @@ class ProgramChefsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_program_chef
-      @program_chef = ProgramChef.find(params[:id])
-    end
+    #def set_program_chef
+      #@program_chef = ProgramChef.find(params[:id])
+    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     #def program_chef_params
