@@ -15,6 +15,25 @@
     <%= f.label :program_name %><br>
     <%= f.text_field :program_name %>
   </div>
+
+  <% if @program.any? %>
+    <hr>
+      <%= form_for program_program_chefs_path do %>
+              <%= hidden_field_tag 'program_id', @program.id  %>
+              <%= hidden_field_tag 'chef_resource_type', "install"  %>
+              <%= submit_tag "add-install", class: "btn btn-success" %>
+      <% end %>
+      <%= form_for program_program_chefs_path do %>
+              <%= hidden_field_tag 'program_id', @program.id  %>
+              <%= hidden_field_tag 'chef_resource_type', "file-folder"  %>
+              <%= submit_tag "add-file-folder", class: "btn btn-success" %>
+      <% end %>
+      <h2>Chef resource</h2>
+      <%= render partial: "chefresources", collection: @program.chef_resources, as: :chef %>
+    <hr>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

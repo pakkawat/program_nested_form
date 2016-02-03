@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :chef_resources
-  resources :programs
+  resources :programs do
+    resources :program_chefs
+  end
+
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

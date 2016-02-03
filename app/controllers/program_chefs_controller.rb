@@ -24,15 +24,17 @@ class ProgramChefsController < ApplicationController
   # POST /program_chefs
   # POST /program_chefs.json
   def create
-    @program_chef = ProgramChef.new(program_chef_params)
+    #@program_chef = ProgramChef.new(program_chef_params)
+    @program = Program.find(params[:program_id])
+    @chef_resource = ChefResource.new(resource_type: params[:chef_resource_type])
 
     respond_to do |format|
-      if @program_chef.save
-        format.html { redirect_to @program_chef, notice: 'Program chef was successfully created.' }
-        format.json { render :show, status: :created, location: @program_chef }
+      if @program.program_chefs.create(chef_resource: @chef_resource)
+        format.html { redirect_to edit_program_path(@program), notice: 'Chef resource was successfully created.' }
+        format.json { render :show, status: :created, location: edit_program_path(@program) }
       else
         format.html { render :new }
-        format.json { render json: @program_chef.errors, status: :unprocessable_entity }
+        format.json { render json: @program.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,9 +56,12 @@ class ProgramChefsController < ApplicationController
   # DELETE /program_chefs/1
   # DELETE /program_chefs/1.json
   def destroy
-    @program_chef.destroy
+    @program = Program.find(params[:program_id])
+    @chef_resource = ChefResource.find(params[:chef_id])
+    @program.chef_resources.find_by(chef_resource_id: @chef_resource.id).destroy
+    #@program_chef.destroy
     respond_to do |format|
-      format.html { redirect_to program_chefs_url, notice: 'Program chef was successfully destroyed.' }
+      format.html { redirect_to edit_program_path(@program), notice: 'Chef resource was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +73,7 @@ class ProgramChefsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def program_chef_params
-      params[:program_chef]
-    end
+    #def program_chef_params
+      #params[:program_chef]
+    #end
 end
