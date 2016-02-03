@@ -58,7 +58,7 @@ class ProgramChefsController < ApplicationController
   def destroy
     @program = Program.find(params[:program_id])
     @chef_resource = ChefResource.find(params[:chef_id])
-    @program.chef_resources.find_by(chef_resource_id: @chef_resource.id).destroy
+    @program.program_chefs.find_by(chef_resource_id: @chef_resource.id).destroy
     #@program_chef.destroy
     respond_to do |format|
       format.html { redirect_to edit_program_path(@program), notice: 'Chef resource was successfully destroyed.' }

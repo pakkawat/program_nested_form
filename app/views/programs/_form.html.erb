@@ -16,14 +16,21 @@
     <%= f.text_field :program_name %>
   </div>
 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
   <% if @program.persisted? %>
     <hr>
-      <%= form_for program_program_chefs_path(@program.id) do %>
+      <%= form_for(@program, :url => "/programs/"+@program.id.to_s+"/program_chefs", :method => :post) do %>
               <%= hidden_field_tag 'program_id', @program.id  %>
               <%= hidden_field_tag 'chef_resource_type', "install"  %>
               <%= submit_tag "add-install", class: "btn btn-success" %>
       <% end %>
-      <%= form_for program_program_chefs_path(@program.id) do %>
+      <%= form_for(@program, :url => "/programs/"+@program.id.to_s+"/program_chefs", :method => :post) do %>
               <%= hidden_field_tag 'program_id', @program.id  %>
               <%= hidden_field_tag 'chef_resource_type', "file-folder"  %>
               <%= submit_tag "add-file-folder", class: "btn btn-success" %>
@@ -34,9 +41,3 @@
       <% end %>
     <hr>
   <% end %>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
