@@ -1,6 +1,10 @@
 <div class="chef_resource_fields" data-id="<%= chef.id %>">
 <div class="field">
 <%= chef.resource_type %>
+<div style="display: none;">
+  <%= expand_collapse_for(chef) %>
+</div>
+<button type="button" class="btn chef_property">Expand</button>
 <%= link_to 'Edit', edit_chef_resource_path(chef) %>
 <%= form_for(@program, :url => "/programs/"+@program.id.to_s+"/program_chefs/"+chef.id.to_s, :method => :delete) do %>
         <%= hidden_field_tag 'program_id', @program.id  %>

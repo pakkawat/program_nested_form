@@ -41,7 +41,7 @@
               <%= property.hidden_field :value_type, :value => "name" %>
             <% end %>
           <% else %>
-            <%= property.label :name %><br>
+            <%= property.label :file_path %><br>
             <%= property.text_field :value %>
             <% if property.object.id != nil %>
               <%= property.hidden_field :value_type %>
@@ -54,7 +54,7 @@
       <% when "Extract" %>
         <%= f.fields_for :chef_properties do |property| %>
           <% if @property_count == 0 %>
-            <%= property.label :name %><br>
+            <%= property.label :source %><br>
             <%= property.text_field :value %>
             <% if property.object.id != nil %>
               <%= property.hidden_field :value_type %>
@@ -62,7 +62,7 @@
               <%= property.hidden_field :value_type, :value => "source" %>
             <% end %>
           <% else %>
-            <%= property.label :name %><br>
+            <%= property.label :destination %><br>
             <%= property.text_area :value %>
             <% if property.object.id != nil %>
               <%= property.hidden_field :value_type %>
