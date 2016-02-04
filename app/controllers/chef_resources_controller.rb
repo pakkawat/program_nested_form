@@ -81,6 +81,6 @@ class ChefResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chef_resource_params
-      params.require(:chef_resource).permit(:resource_type, room_categories_attributes: [ :id, :value, :value_type ])
+      params.require(:chef_resource).permit(:resource_type, chef_properties_attributes: [ :id, :value, :value_type ])
     end
 end
