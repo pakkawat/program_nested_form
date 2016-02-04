@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202115103) do
+ActiveRecord::Schema.define(version: 20160204095300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chef_properties", force: :cascade do |t|
+    t.string   "value"
+    t.string   "value_type"
+    t.integer  "chef_resource_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "chef_properties", ["chef_resource_id"], name: "index_chef_properties_on_chef_resource_id", using: :btree
 
   create_table "chef_resources", force: :cascade do |t|
     t.string   "resource_type"
@@ -38,4 +48,5 @@ ActiveRecord::Schema.define(version: 20160202115103) do
     t.datetime "updated_at",   null: false
   end
 
+  add_foreign_key "chef_properties", "chef_resources"
 end
