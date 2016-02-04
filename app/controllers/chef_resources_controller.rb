@@ -19,6 +19,18 @@ class ChefResourcesController < ApplicationController
 
   # GET /chef_resources/1/edit
   def edit
+    @property_count = 0
+    case @chef_resource.resource_type
+    when "Repository", "Deb", "Source"
+      if !@chef_resource.chef_properties.any?
+        @chef_resource.chef_properties.build
+      end
+    when "Download", "Extract"
+      if !@chef_resource.chef_properties.any?
+        @chef_resource.chef_properties.build
+        @chef_resource.chef_properties.build
+      end
+    end
   end
 
   # POST /chef_resources
@@ -69,6 +81,6 @@ class ChefResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chef_resource_params
-      params.require(:chef_resource).permit(:resource_type)
+      params.require(:chef_resource).permit(:resource_type, room_categories_attributes: [ :id, :value, :value_type ])
     end
 end
