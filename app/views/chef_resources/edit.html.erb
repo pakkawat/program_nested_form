@@ -4,3 +4,7 @@
 
 <%= link_to 'Show', @chef_resource %> |
 <%= link_to 'Back', chef_resources_path %>
+<br>
+<% @chef_resource.programs.each do |program| %>
+  <%= link_to program.program_name, edit_program_path(program) %><br>
+<% end %>

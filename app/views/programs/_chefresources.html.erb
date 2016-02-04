@@ -1,6 +1,7 @@
 <div class="chef_resource_fields" data-id="<%= chef.id %>">
 <div class="field">
 <%= chef.resource_type %>
+<%= link_to 'Edit', edit_chef_resource_path(chef) %>
 <%= form_for(@program, :url => "/programs/"+@program.id.to_s+"/program_chefs/"+chef.id.to_s, :method => :delete) do %>
         <%= hidden_field_tag 'program_id', @program.id  %>
         <%= hidden_field_tag 'chef_id', chef.id  %>
