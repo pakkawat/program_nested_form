@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :chef_resources
   resources :programs do
     resources :program_chefs
+    put :sort, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

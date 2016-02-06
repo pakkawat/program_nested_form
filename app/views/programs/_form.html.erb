@@ -16,7 +16,7 @@
     <%= f.text_field :program_name %>
   </div>
 
-
+  <%= hidden_field_tag :program_id, @program.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
@@ -36,9 +36,13 @@
               <%= submit_tag "add-file-folder", class: "btn btn-success" %>
       <% end %>
       <h2>Chef resource</h2>
-      <% if @program.chef_resources.any? %>
-        <%= render partial: "chefresources", collection: @program.chef_resources, as: :chef %>
-      <% end %>
+      <div class="sortable">
+        <% if @program.chef_resources.any? %>
+          <%= render partial: "chefresources", collection: @program.chef_resources, as: :chef %>
+        <% end %>
+    </div>
     <hr>
   <% end %>
 <%= javascript_include_tag "programs/btn_expand_collapse.js"%>
+<%= javascript_include_tag "programs/html.sortable.js"%>
+<%= javascript_include_tag "programs/sort.js"%>
